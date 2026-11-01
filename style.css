@@ -1,7 +1,16 @@
 ```css
-/* =====================================
-   GLOBAL
-===================================== */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --orange: #ff7a18;
+    --orange-light: #ff9b45;
+    --dark: #090b10;
+    --card: #11151d;
+    --card-light: #171d27;
+    --white: #f5f5f5;
+    --muted: #9ba3af;
+    --border: rgba(255,255,255,0.09);
+}
 
 * {
     margin: 0;
@@ -9,76 +18,58 @@
     box-sizing: border-box;
 }
 
-:root {
-    --background: #090b10;
-    --surface: #11141b;
-    --card: #151922;
-    --orange: #ff9933;
-    --green: #138808;
-    --white: #ffffff;
-    --muted: #9298a5;
-    --border: #252a35;
-}
-
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    background: var(--background);
+    background: var(--dark);
     color: var(--white);
-    font-family: 'Inter', Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
 }
 
 a {
+    color: inherit;
     text-decoration: none;
 }
 
+button, input, select, textarea {
+    font: inherit;
+}
 
-/* =====================================
-   NAVBAR
-===================================== */
+/* NAVBAR */
 
 .navbar {
     width: 100%;
-    height: 85px;
-    padding: 0 7%;
-
+    min-height: 82px;
+    padding: 14px 7%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    background: #090b10;
+    background: rgba(9,11,16,0.96);
     border-bottom: 1px solid var(--border);
-
     position: relative;
     z-index: 100;
 }
-
-/* ACTUAL HTML CLASS: brand */
 
 .brand {
     display: flex;
     align-items: center;
     gap: 12px;
-
-    color: white;
-    font-size: 23px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 29px;
     font-weight: 900;
     letter-spacing: 2px;
 }
 
-/* CRITICAL LOGO FIX */
-
 .brand img {
-    width: 52px !important;
-    height: 52px !important;
+    display: block;
+    width: 52px;
+    height: 52px;
     max-width: 52px;
     max-height: 52px;
-
     object-fit: contain;
-    display: block;
     flex-shrink: 0;
 }
 
@@ -86,22 +77,17 @@ a {
     color: var(--orange);
 }
 
-
-/* NAVIGATION LINKS */
-
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 34px;
 }
 
 .nav-links a {
-    color: var(--muted);
-
+    color: #c4c8cf;
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 1px;
-
     transition: 0.2s;
 }
 
@@ -110,332 +96,209 @@ a {
     color: var(--orange);
 }
 
-
-/* BACK TO HOME BUTTON */
-
 .nav-button {
-    padding: 12px 19px;
-
-    border: 1px solid var(--orange);
-    border-radius: 5px;
-
-    color: var(--orange);
-
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1px;
-
-    transition: 0.2s;
+    padding: 12px 22px;
+    background: var(--orange);
+    color: #111 !important;
+    font-weight: 800 !important;
+    border-radius: 3px;
 }
 
 .nav-button:hover {
-    background: var(--orange);
-    color: #090b10;
+    background: var(--orange-light);
 }
-
-
-/* MOBILE MENU BUTTON */
 
 .menu-toggle {
     display: none;
-
-    background: none;
-    border: none;
-
+    background: transparent;
+    border: 0;
     color: white;
-    font-size: 25px;
-
+    font-size: 28px;
     cursor: pointer;
 }
 
-
-/* =====================================
-   RECRUITMENT HERO
-===================================== */
+/* RECRUITMENT HERO */
 
 .recruit-hero {
-    min-height: 440px;
-    width: 100%;
-
-    padding: 80px 20px;
-
+    min-height: 390px;
+    padding: 100px 8% 75px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
     background:
-        radial-gradient(
-            ellipse at 50% 0%,
-            rgba(255, 153, 51, 0.13),
-            transparent 65%
-        ),
-        #090b10;
-
+        radial-gradient(ellipse at 80% 20%, rgba(255,122,24,0.13), transparent 40%),
+        linear-gradient(135deg, #10141c, #090b10 70%);
     border-bottom: 1px solid var(--border);
 }
 
 .recruit-tag {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 10px;
-
     color: var(--orange);
-
     font-size: 11px;
-    font-weight: 900;
+    font-weight: 800;
     letter-spacing: 3px;
+    margin-bottom: 22px;
 }
 
 .recruit-tag span {
     width: 8px;
     height: 8px;
-
-    background: var(--green);
+    background: var(--orange);
     border-radius: 50%;
+    box-shadow: 0 0 12px var(--orange);
 }
 
 .recruit-hero h1 {
-    margin: 28px 0 20px;
-
-    font-size: clamp(42px, 7vw, 76px);
-    line-height: 1.05;
-
+    max-width: 850px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(48px, 7vw, 86px);
+    line-height: 0.95;
     font-weight: 900;
-    letter-spacing: -2px;
+    letter-spacing: 1px;
 }
 
-.recruit-hero h1 span {
-    color: var(--orange);
-}
-
-.recruit-hero > p {
-    max-width: 570px;
-
-    margin: 0 auto;
-
+.recruit-hero p {
+    max-width: 620px;
     color: var(--muted);
-
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.8;
+    margin-top: 25px;
 }
-
-
-/* HERO INFORMATION */
 
 .recruit-info {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
-
-    gap: 25px;
-    margin-top: 38px;
+    gap: 30px;
+    margin-top: 35px;
 }
 
-.recruit-info span {
-    color: #c3c8d2;
-
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-
-/* =====================================
-   APPLICATION SECTION
-===================================== */
-
-.application-section {
-    width: 100%;
-    max-width: 1150px;
-
-    margin: 0 auto;
-    padding: 90px 25px;
-}
-
-
-/* APPLICATION HEADING */
-
-.application-heading {
-    margin-bottom: 45px;
-}
-
-.section-label {
-    color: var(--orange);
-
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 2px;
-}
-
-.section-label span {
-    color: white;
-}
-
-.application-heading h2 {
-    margin: 20px 0 12px;
-
-    font-size: clamp(32px, 5vw, 48px);
-    font-weight: 900;
-}
-
-.application-heading h2 span {
-    color: var(--orange);
-}
-
-.application-heading p {
-    color: var(--muted);
-
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-
-/* =====================================
-   FORM CARDS
-===================================== */
-
-.form-card {
-    width: 100%;
-
-    margin-bottom: 25px;
-    padding: 35px;
-
-    background: var(--card);
-
-    border: 1px solid var(--border);
-    border-radius: 10px;
-}
-
-
-/* CARD HEADING */
-
-.form-card-heading {
-    display: flex;
-    align-items: center;
-    gap: 17px;
-
-    margin-bottom: 32px;
-    padding-bottom: 23px;
-
-    border-bottom: 1px solid var(--border);
-}
-
-.form-number {
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    flex-shrink: 0;
-
-    background: rgba(255, 153, 51, 0.12);
-
-    color: var(--orange);
-
-    border-radius: 6px;
-
-    font-size: 14px;
-    font-weight: 900;
-}
-
-.form-card-heading h3 {
-    font-size: 15px;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.form-card-heading p {
-    margin-top: 6px;
-
+.recruit-info div {
     color: var(--muted);
     font-size: 12px;
 }
 
+.recruit-info strong {
+    display: block;
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    margin-bottom: 3px;
+}
 
-/* =====================================
-   FORM GRID
-===================================== */
+/* APPLICATION SECTION */
+
+.application-section {
+    padding: 85px 8%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.application-heading {
+    margin-bottom: 35px;
+}
+
+.section-label {
+    color: var(--orange);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.application-heading h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 5vw, 55px);
+    font-weight: 800;
+}
+
+.application-heading p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-top: 10px;
+}
+
+#applicationForm {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.form-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.form-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 22px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-number {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    background: rgba(255,122,24,0.13);
+    color: var(--orange);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    border-radius: 4px;
+}
+
+.form-card-heading h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+}
 
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 25px;
+    gap: 22px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 11px;
+    gap: 9px;
+}
 
-    min-width: 0;
-    margin-bottom: 25px;
+.form-group.full-width {
+    grid-column: 1 / -1;
 }
 
 .form-group label {
-    color: #e7e9ee;
-
+    color: #d9dce2;
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 700;
 }
 
-
-/* INPUTS, SELECTS AND TEXTAREAS */
+.form-group label span {
+    color: var(--orange);
+}
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    min-width: 0;
-
-    padding: 15px;
-
-    background: #0b0e14;
-
-    border: 1px solid #303644;
-    border-radius: 5px;
-
+    padding: 14px 15px;
     color: white;
-
-    font-family: inherit;
-    font-size: 13px;
-
+    background: var(--card-light);
+    border: 1px solid var(--border);
+    border-radius: 4px;
     outline: none;
-
+    font-size: 13px;
     transition: border 0.2s;
-}
-
-.form-group input,
-.form-group select {
-    height: 52px;
-}
-
-.form-group textarea {
-    min-height: 145px;
-
-    resize: vertical;
-    line-height: 1.7;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: #687080;
-}
-
-.form-group select {
-    cursor: pointer;
-}
-
-.form-group select option {
-    background: #11141b;
-    color: white;
 }
 
 .form-group input:focus,
@@ -444,75 +307,48 @@ a {
     border-color: var(--orange);
 }
 
-
-/* FULL WIDTH FIELDS */
-
-.full-width {
-    width: 100%;
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #68717e;
 }
 
+.form-group select {
+    cursor: pointer;
+}
 
-/* CHARACTER COUNTER */
+.form-group select option {
+    background: var(--card);
+}
+
+.form-group textarea {
+    min-height: 125px;
+    resize: vertical;
+    line-height: 1.6;
+}
 
 .character-info {
-    align-self: flex-end;
-
     color: var(--muted);
     font-size: 11px;
+    text-align: right;
 }
-
-
-/* =====================================
-   SUBMISSION
-===================================== */
-
-.submit-area {
-    padding: 30px 0;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    border-top: 1px solid var(--border);
-}
-
-.submit-area p {
-    max-width: 550px;
-
-    margin-bottom: 22px;
-
-    color: var(--muted);
-
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-
-/* ACTUAL HTML CLASS: submit-button */
 
 .submit-button {
-    min-width: 240px;
-
-    padding: 17px 25px;
-
-    background: var(--orange);
-    color: #090b10;
-
+    width: fit-content;
+    min-width: 210px;
+    padding: 16px 28px;
     border: none;
-    border-radius: 5px;
-
-    font-family: inherit;
-    font-size: 12px;
+    border-radius: 4px;
+    background: var(--orange);
+    color: #111;
     font-weight: 900;
+    font-size: 12px;
     letter-spacing: 1px;
-
     cursor: pointer;
-
     transition: 0.2s;
 }
 
 .submit-button:hover {
-    background: #ffb15c;
+    background: var(--orange-light);
     transform: translateY(-2px);
 }
 
@@ -523,78 +359,47 @@ a {
 }
 
 #formMessage {
-    margin-top: 20px;
-
-    color: var(--green);
+    padding: 14px;
+    border-radius: 4px;
     font-size: 13px;
-    line-height: 1.6;
+    display: none;
 }
 
-
-/* =====================================
-   FOOTER
-===================================== */
+/* FOOTER */
 
 .footer {
-    padding: 45px 7% 20px;
-
+    padding: 55px 8% 20px;
     background: #07090d;
-
     border-top: 1px solid var(--border);
 }
 
 .footer-top {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-
-    padding-bottom: 35px;
+    align-items: flex-start;
+    gap: 40px;
+    padding-bottom: 40px;
 }
-
-
-/* FOOTER BRAND */
 
 .footer-brand {
     display: flex;
     align-items: center;
     gap: 13px;
-}
-
-/* CRITICAL FOOTER LOGO FIX */
-
-.footer-brand img {
-    width: 55px !important;
-    height: 55px !important;
-
-    max-width: 55px;
-    max-height: 55px;
-
-    object-fit: contain;
-    display: block;
-}
-
-.footer-brand h3 {
-    font-size: 22px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 27px;
     font-weight: 900;
     letter-spacing: 2px;
 }
 
-.footer-brand h3 span {
-    color: var(--orange);
+.footer-brand img {
+    display: block;
+    width: 55px;
+    height: 55px;
+    max-width: 55px;
+    max-height: 55px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
-
-.footer-brand p {
-    margin-top: 5px;
-
-    color: var(--muted);
-
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-
-/* FOOTER LINKS */
 
 .footer-links {
     display: flex;
@@ -604,11 +409,7 @@ a {
 
 .footer-links a {
     color: var(--muted);
-
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1px;
-
+    font-size: 12px;
     transition: 0.2s;
 }
 
@@ -616,66 +417,21 @@ a {
     color: var(--orange);
 }
 
-
-/* FOOTER BOTTOM */
-
 .footer-bottom {
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: #68717e;
+    font-size: 11px;
     display: flex;
     justify-content: space-between;
     gap: 15px;
-
-    padding-top: 20px;
-
-    border-top: 1px solid var(--border);
 }
 
-.footer-bottom span {
-    color: #687080;
+/* MOBILE */
 
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-
-/* =====================================
-   MOBILE
-===================================== */
-
-@media (max-width: 850px) {
-
+@media (max-width: 800px) {
     .navbar {
-        padding: 0 5%;
-    }
-
-    .nav-links {
-        gap: 16px;
-    }
-
-    .nav-links a {
-        font-size: 10px;
-    }
-
-    .nav-button {
-        display: none;
-    }
-
-}
-
-
-@media (max-width: 650px) {
-
-    .navbar {
-        height: 75px;
-    }
-
-    .brand {
-        font-size: 20px;
-    }
-
-    .brand img {
-        width: 45px !important;
-        height: 45px !important;
+        padding: 12px 5%;
     }
 
     .menu-toggle {
@@ -684,21 +440,16 @@ a {
 
     .nav-links {
         display: none;
-
         position: absolute;
-        top: 75px;
+        top: 100%;
         left: 0;
-
         width: 100%;
-
-        padding: 25px;
-
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-
-        background: #11141b;
+        padding: 25px 5%;
+        background: #0d1118;
         border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
     }
 
     .nav-links.show {
@@ -706,62 +457,42 @@ a {
     }
 
     .recruit-hero {
-        min-height: 400px;
-        padding: 60px 20px;
-    }
-
-    .recruit-hero h1 {
-        font-size: 43px;
-    }
-
-    .recruit-info {
-        flex-direction: column;
-        gap: 15px;
+        padding: 75px 6%;
     }
 
     .application-section {
-        padding: 60px 15px;
+        padding: 65px 5%;
     }
 
     .form-card {
-        padding: 25px 18px;
+        padding: 22px;
     }
 
+    .footer {
+        padding: 45px 6% 20px;
+    }
+}
+
+@media (max-width: 550px) {
     .form-grid {
         grid-template-columns: 1fr;
-        gap: 0;
     }
 
-    .footer-top {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 30px;
+    .form-group.full-width {
+        grid-column: auto;
     }
 
-    .footer-links {
-        gap: 18px;
-    }
-
+    .footer-top,
     .footer-bottom {
         flex-direction: column;
+    }
+
+    .recruit-info {
+        gap: 20px;
     }
 
     .submit-button {
         width: 100%;
     }
-
-}
-
-
-@media (max-width: 380px) {
-
-    .recruit-hero h1 {
-        font-size: 35px;
-    }
-
-    .form-card {
-        padding: 20px 14px;
-    }
-
 }
 ```
