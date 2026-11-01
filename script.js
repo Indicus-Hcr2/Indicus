@@ -1,72 +1,96 @@
-// ==================================
-// INDICUS WEBSITE JAVASCRIPT
-// ==================================
+// ==========================================
+// INDICUS WEBSITE - MAIN JAVASCRIPT
+// ==========================================
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-    // MOBILE NAVIGATION
+    // ======================================
+    // 1. MOBILE NAVIGATION
+    // ======================================
 
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
-    menuToggle.addEventListener("click", () => {
+    if (menuToggle && navLinks) {
 
-        navLinks.classList.toggle("show");
+        menuToggle.addEventListener("click", function () {
 
-        const isOpen = navLinks.classList.contains("show");
+            navLinks.classList.toggle("show");
 
-        menuToggle.textContent = isOpen ? "✕" : "☰";
-        menuToggle.setAttribute("aria-expanded", isOpen);
+            const isOpen = navLinks.classList.contains("show");
 
-    });
+            menuToggle.textContent = isOpen ? "✕" : "☰";
 
-
-    // CLOSE MOBILE MENU WHEN LINK IS CLICKED
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            navLinks.classList.remove("show");
-
-            menuToggle.textContent = "☰";
-            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-expanded", isOpen);
 
         });
 
-    });
+        // Close menu after clicking a link
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("show");
+
+                menuToggle.textContent = "☰";
+
+                menuToggle.setAttribute("aria-expanded", "false");
+
+            });
+
+        });
+
+    }
 
 
-    // SECTION SCROLL ANIMATIONS
+    // ======================================
+    // 2. SCROLL ANIMATIONS
+    // ======================================
 
-    const sections = document.querySelectorAll(
+    const animatedSections = document.querySelectorAll(
         ".about, .team, .recruitment"
     );
 
-    const observer = new IntersectionObserver((entries) => {
+    if ("IntersectionObserver" in window) {
 
-        entries.forEach(entry => {
+        const animationObserver = new IntersectionObserver(
+            function (entries) {
 
-            if (entry.isIntersecting) {
+                entries.forEach(entry => {
 
-                entry.target.classList.add("visible");
+                    if (entry.isIntersecting) {
 
-                observer.unobserve(entry.target);
+                        entry.target.classList.add("visible");
 
+                        animationObserver.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
             }
+        );
 
+        animatedSections.forEach(section => {
+            animationObserver.observe(section);
         });
 
-    }, {
-        threshold: 0.12
-    });
+    } else {
 
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+        animatedSections.forEach(section => {
+            section.classList.add("visible");
+        });
+
+    }
 
 
-    // NAVIGATION ACTIVE STATE
+    // ======================================
+    // 3. ACTIVE NAVIGATION HIGHLIGHT
+    // ======================================
 
     const navItems = document.querySelectorAll(".nav-links a");
 
@@ -74,35 +98,121 @@ document.addEventListener("DOMContentLoaded", () => {
         "main section[id]"
     );
 
-    const navObserver = new IntersectionObserver((entries) => {
+    if ("IntersectionObserver" in window) {
 
-        entries.forEach(entry => {
+        const navObserver = new IntersectionObserver(
+            function (entries) {
 
-            if (entry.isIntersecting) {
+                entries.forEach(entry => {
 
-                navItems.forEach(link => {
+                    if (entry.isIntersecting) {
 
-                    link.classList.remove("active");
+                        navItems.forEach(link => {
 
-                    if (
-                        link.getAttribute("href") ===
-                        "#" + entry.target.id
-                    ) {
-                        link.classList.add("active");
+                            link.classList.remove("active");
+
+                            if (
+                                link.getAttribute("href") ===
+                                "#" + entry.target.id
+                            ) {
+
+                                link.classList.add("active");
+
+                            }
+
+                        });
+
                     }
 
                 });
+
+            },
+            {
+                threshold: 0.4
+            }
+        );
+
+        pageSections.forEach(section => {
+            navObserver.observe(section);
+        });
+
+    }
+
+
+    // ======================================
+    // 4. RECRUITMENT FORM
+    // ======================================
+
+    const applicationForm = document.getElementById(
+        "applicationForm"
+    );
+
+    const formMessage = document.getElementById(
+        "formMessage"
+    );
+
+    const submitButton = document.getElementById(
+        "submitButton"
+    );
+
+    if (applicationForm) {
+
+        applicationForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            // Validate form
+
+            if (!applicationForm.checkValidity()) {
+
+                applicationForm.reportValidity();
+
+                return;
+
+            }
+
+            // Backend is not connected yet
+
+            if (formMessage) {
+
+                formMessage.textContent =
+                    "Application form is ready! Backend integration is still required to submit your application.";
+
+            }
+
+            console.log("INDICUS recruitment form validated.");
+
+        });
+
+    }
+
+
+    // ======================================
+    // 5. CHARACTER COUNTER
+    // ======================================
+
+    const reasonField = document.getElementById("reason");
+
+    if (reasonField) {
+
+        const characterInfo = document.querySelector(
+            ".character-info"
+        );
+
+        reasonField.addEventListener("input", function () {
+
+            if (characterInfo) {
+
+                characterInfo.textContent =
+                    reasonField.value.length + " / 1000 characters";
 
             }
 
         });
 
-    }, {
-        threshold: 0.4
-    });
+    }
 
-    pageSections.forEach(section => {
-        navObserver.observe(section);
-    });
+
+    console.log("INDICUS website loaded successfully.");
 
 });
