@@ -1,388 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Recruitment | INDICUS</title>
-
-    <link rel="icon" href="IndicusLogo.png">
+    <title>Join INDICUS | Recruitment</title>
     <link rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-
-    <header class="navbar">
-
-        <a href="index.html" class="brand">
+<header>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
             <img src="IndicusLogo.png" alt="INDICUS Logo">
-            <span>INDICUS<span class="orange">.</span></span>
+            <span>INDICUS</span>
         </a>
 
-        <nav class="nav-links" id="navLinks">
-            <a href="index.html">HOME</a>
-            <a href="index.html#about">ABOUT</a>
-            <a href="index.html#team">OUR TEAM</a>
-            <a href="recruitment.html" class="active">RECRUITMENT</a>
-        </nav>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#team">Team</a>
+            <a href="recruitment.html" class="active">Recruitment</a>
+        </div>
+    </nav>
+</header>
 
-        <a href="index.html" class="nav-button">
-            BACK HOME ↗
-        </a>
-
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
-            ☰
-        </button>
-
-    </header>
-
-
-    <!-- RECRUITMENT HERO -->
+<main>
 
     <section class="recruit-hero">
-
-        <div class="recruit-tag">
-            <span></span>
-            INDICUS RECRUITMENT PORTAL
-        </div>
-
-        <h1>
-            YOUR JOURNEY<br>
-            STARTS <span>HERE.</span>
-        </h1>
-
-        <p>
-            Think you have what it takes to represent India?
-            Submit your application and take your first step
-            towards joining INDICUS.
-        </p>
-
-        <div class="recruit-info">
-            <span>🇮🇳 INDIAN HCR2 TEAM</span>
-            <span>APPLICATIONS OPEN</span>
-        </div>
-
+        <h1>JOIN <span>INDICUS</span></h1>
+        <p>Think you have what it takes? Apply to become a part of our team.</p>
     </section>
-
-
-    <!-- APPLICATION FORM -->
 
     <section class="application-section">
 
-        <div class="application-heading">
+        <div class="form-card">
 
-            <div class="section-label">
-                <span>01</span> / APPLICATION FORM
-            </div>
+            <h2>Recruitment Application</h2>
+            <p>Fill in your details accurately before submitting.</p>
 
-            <h2>JOIN THE <span>TEAM.</span></h2>
+            <form id="applicationForm">
 
-            <p>
-                Fill in the details below accurately.
-                Our recruitment team will review your application.
-            </p>
-
-        </div>
-
-
-        <form id="applicationForm">
-
-            <!-- PLAYER INFORMATION -->
-
-            <div class="form-card">
-
-                <div class="form-card-heading">
-                    <span class="form-number">01</span>
-
-                    <div>
-                        <h3>PLAYER INFORMATION</h3>
-                        <p>Your basic player details.</p>
-                    </div>
-                </div>
-
+                <h3>01 — Player Information</h3>
 
                 <div class="form-grid">
 
                     <div class="form-group">
-                        <label for="playerName">HCR2 Username *</label>
-
-                        <input
-                            type="text"
-                            id="playerName"
-                            name="playerName"
-                            placeholder="Enter your HCR2 username"
-                            maxlength="40"
-                            required
-                        >
+                        <label for="username">HCR2 Username *</label>
+                        <input type="text" id="username" name="username" required>
                     </div>
-
 
                     <div class="form-group">
-                        <label for="playerId">HCR2 Player ID *</label>
-
-                        <input
-                            type="text"
-                            id="playerId"
-                            name="playerId"
-                            placeholder="Enter your player ID"
-                            maxlength="40"
-                            required
-                        >
+                        <label for="playerID">Player ID *</label>
+                        <input type="text" id="playerID" name="playerID" required>
                     </div>
-
 
                     <div class="form-group">
                         <label for="discord">Discord Username *</label>
-
-                        <input
-                            type="text"
-                            id="discord"
-                            name="discord"
-                            placeholder="Your Discord username"
-                            maxlength="50"
-                            required
-                        >
+                        <input type="text" id="discord" name="discord" required>
                     </div>
-
 
                     <div class="form-group">
-                        <label for="currentTeam">Current Team</label>
-
-                        <input
-                            type="text"
-                            id="currentTeam"
-                            name="currentTeam"
-                            placeholder="Your current team (if any)"
-                            maxlength="60"
-                        >
+                        <label for="currentTeam">Current / Previous Team</label>
+                        <input type="text" id="currentTeam" name="currentTeam"
+                               placeholder="Enter N/A if none">
                     </div>
 
                 </div>
 
-            </div>
-
-
-            <!-- GAME STATISTICS -->
-
-            <div class="form-card">
-
-                <div class="form-card-heading">
-
-                    <span class="form-number">02</span>
-
-                    <div>
-                        <h3>GAME STATISTICS</h3>
-                        <p>Tell us about your HCR2 experience.</p>
-                    </div>
-
-                </div>
-
+                <h3>02 — Game Statistics</h3>
 
                 <div class="form-grid">
 
                     <div class="form-group">
-
                         <label for="bestVehicle">Best Vehicle *</label>
-
-                        <select id="bestVehicle" name="bestVehicle" required>
-
-                            <option value="">Select your best vehicle</option>
-
-                            <option>Hill Climber</option>
-                            <option>Motocross</option>
-                            <option>Monster Truck</option>
-                            <option>Tractor</option>
-                            <option>Race Car</option>
-                            <option>Rally Car</option>
-                            <option>Super Diesel</option>
-                            <option>Dune Buggy</option>
-                            <option>Supercar</option>
-                            <option>Other</option>
-
-                        </select>
-
+                        <input type="text" id="bestVehicle" name="bestVehicle" required>
                     </div>
 
-
                     <div class="form-group">
-
-                        <label for="bestDistance">Personal Best Distance *</label>
-
-                        <input
-                            type="number"
-                            id="bestDistance"
-                            name="bestDistance"
-                            placeholder="Distance in metres"
-                            min="0"
-                            max="10000000"
-                            required
-                        >
-
+                        <label for="personalBest">Personal Best Distance *</label>
+                        <input type="text" id="personalBest" name="personalBest" required>
                     </div>
 
+                    <div class="form-group">
+                        <label for="garagePower">GP *</label>
+                        <input type="number" id="garagePower" name="gp"
+                               min="0" required>
+                    </div>
 
                     <div class="form-group">
+                        <label for="vehicleMasteries">Number of Vehicle Masteries *</label>
+                        <input type="number" id="vehicleMasteries"
+                               name="vehicleMasteries" min="0" required>
+                    </div>
 
+                    <div class="form-group">
                         <label for="weeklyActivity">Weekly Activity *</label>
-
-                        <select id="weeklyActivity" name="weeklyActivity" required>
-
-                            <option value="">Select activity</option>
-                            <option>Daily</option>
-                            <option>5-6 days a week</option>
-                            <option>3-4 days a week</option>
-                            <option>1-2 days a week</option>
-
-                        </select>
-
+                        <input type="text" id="weeklyActivity"
+                               name="weeklyActivity"
+                               placeholder="Hours played per week" required>
                     </div>
-
 
                     <div class="form-group">
-
-                        <label for="experience">Playing Experience *</label>
-
-                        <select id="experience" name="experience" required>
-
-                            <option value="">Select experience</option>
-                            <option>Less than 6 months</option>
-                            <option>6 months - 1 year</option>
-                            <option>1-2 years</option>
-                            <option>2-3 years</option>
-                            <option>3+ years</option>
-
-                        </select>
-
+                        <label for="playingExperience">Playing Experience *</label>
+                        <input type="text" id="playingExperience"
+                               name="playingExperience"
+                               placeholder="How long have you played?" required>
                     </div>
 
                 </div>
 
-            </div>
+                <h3>03 — Application</h3>
 
-
-            <!-- APPLICATION DETAILS -->
-
-            <div class="form-card">
-
-                <div class="form-card-heading">
-
-                    <span class="form-number">03</span>
-
-                    <div>
-                        <h3>YOUR APPLICATION</h3>
-                        <p>Tell us why you want to join INDICUS.</p>
-                    </div>
-
-                </div>
-
-
-                <div class="form-group full-width">
-
+                <div class="form-group">
                     <label for="reason">Why do you want to join INDICUS? *</label>
-
-                    <textarea
-                        id="reason"
-                        name="reason"
-                        rows="6"
-                        placeholder="Tell us about yourself and why you want to become a part of INDICUS..."
-                        minlength="20"
-                        maxlength="1000"
-                        required
-                    ></textarea>
-
-                    <span class="character-info">
-                        Maximum 1000 characters.
-                    </span>
-
+                    <textarea id="reason" name="reason" rows="5"
+                              maxlength="500" required></textarea>
                 </div>
 
-
-                <div class="form-group full-width">
-
-                    <label for="additional">Additional Information (Optional)</label>
-
-                    <textarea
-                        id="additional"
-                        name="additional"
-                        rows="3"
-                        placeholder="Anything else you'd like our recruitment team to know..."
-                        maxlength="500"
-                    ></textarea>
-
+                <div class="form-group">
+                    <label for="additionalInfo">Additional Information</label>
+                    <textarea id="additionalInfo" name="additionalInfo"
+                              rows="4" maxlength="500"></textarea>
                 </div>
 
-            </div>
+                <div class="submit-area">
+                    <button type="submit" class="submit-btn">
+                        SUBMIT APPLICATION
+                    </button>
+                </div>
 
+            </form>
 
-            <!-- SUBMIT -->
-
-            <div class="submit-area">
-
-                <p>
-                    By submitting, you confirm that the information
-                    provided is accurate.
-                </p>
-
-                <button type="submit" class="submit-button" id="submitButton">
-
-                    SUBMIT APPLICATION
-
-                    <span>↗</span>
-
-                </button>
-
-                <div id="formMessage" role="status"></div>
-
-            </div>
-
-        </form>
+        </div>
 
     </section>
 
+</main>
 
-    <!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 INDICUS. All rights reserved.</p>
+</footer>
 
-    <footer class="footer">
-
-        <div class="footer-top">
-
-            <div class="footer-brand">
-
-                <img src="IndicusLogo.png" alt="INDICUS Logo">
-
-                <div>
-                    <h3>INDICUS<span>.</span></h3>
-                    <p>BUILT IN INDIA. DRIVEN BY VICTORY.</p>
-                </div>
-
-            </div>
-
-            <div class="footer-links">
-                <a href="index.html">HOME</a>
-                <a href="index.html#about">ABOUT</a>
-                <a href="index.html#team">TEAM</a>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-
-            <span>© 2026 INDICUS. ALL RIGHTS RESERVED.</span>
-
-            <span>MADE FOR THE LOVE OF HCR2.</span>
-
-        </div>
-
-    </footer>
-
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
