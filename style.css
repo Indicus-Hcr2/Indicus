@@ -1,23 +1,12 @@
 ```css
-/* =========================
+/* =====================================
    GLOBAL
-========================= */
+===================================== */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #090b10;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
 }
 
 :root {
@@ -31,15 +20,30 @@ body {
     --border: #252a35;
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
-/* =========================
+body {
+    background: var(--background);
+    color: var(--white);
+    font-family: 'Inter', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* =====================================
    NAVBAR
-========================= */
+===================================== */
 
 .navbar {
     width: 100%;
-    min-height: 85px;
-    padding: 12px 7%;
+    height: 85px;
+    padding: 0 7%;
 
     display: flex;
     align-items: center;
@@ -52,39 +56,51 @@ body {
     z-index: 100;
 }
 
-.logo {
+/* ACTUAL HTML CLASS: brand */
+
+.brand {
     display: flex;
     align-items: center;
     gap: 12px;
 
     color: white;
-    text-decoration: none;
-
     font-size: 23px;
     font-weight: 900;
     letter-spacing: 2px;
 }
 
-.logo img {
-    width: 55px;
-    height: 55px;
+/* CRITICAL LOGO FIX */
+
+.brand img {
+    width: 52px !important;
+    height: 52px !important;
+    max-width: 52px;
+    max-height: 52px;
 
     object-fit: contain;
     display: block;
+    flex-shrink: 0;
 }
+
+.orange {
+    color: var(--orange);
+}
+
+
+/* NAVIGATION LINKS */
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 32px;
 }
 
 .nav-links a {
     color: var(--muted);
-    text-decoration: none;
 
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
 
     transition: 0.2s;
 }
@@ -95,25 +111,65 @@ body {
 }
 
 
-/* =========================
+/* BACK TO HOME BUTTON */
+
+.nav-button {
+    padding: 12px 19px;
+
+    border: 1px solid var(--orange);
+    border-radius: 5px;
+
+    color: var(--orange);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    transition: 0.2s;
+}
+
+.nav-button:hover {
+    background: var(--orange);
+    color: #090b10;
+}
+
+
+/* MOBILE MENU BUTTON */
+
+.menu-toggle {
+    display: none;
+
+    background: none;
+    border: none;
+
+    color: white;
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* =====================================
    RECRUITMENT HERO
-========================= */
+===================================== */
 
 .recruit-hero {
+    min-height: 440px;
     width: 100%;
-    min-height: 310px;
+
+    padding: 80px 20px;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
     text-align: center;
-    padding: 65px 20px;
 
     background:
         radial-gradient(
-            ellipse at top,
-            rgba(255, 153, 51, 0.12),
+            ellipse at 50% 0%,
+            rgba(255, 153, 51, 0.13),
             transparent 65%
         ),
         #090b10;
@@ -121,149 +177,220 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
-.hero-content {
-    max-width: 750px;
-}
+.recruit-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 
-.hero-tag,
-.section-tag {
     color: var(--orange);
-    font-size: 12px;
-    font-weight: 800;
+
+    font-size: 11px;
+    font-weight: 900;
     letter-spacing: 3px;
 }
 
-.recruit-hero h1 {
-    font-size: clamp(38px, 6vw, 65px);
-    font-weight: 900;
-    letter-spacing: 2px;
+.recruit-tag span {
+    width: 8px;
+    height: 8px;
 
-    margin: 18px 0;
+    background: var(--green);
+    border-radius: 50%;
+}
+
+.recruit-hero h1 {
+    margin: 28px 0 20px;
+
+    font-size: clamp(42px, 7vw, 76px);
+    line-height: 1.05;
+
+    font-weight: 900;
+    letter-spacing: -2px;
 }
 
 .recruit-hero h1 span {
     color: var(--orange);
 }
 
-.recruit-hero p {
-    max-width: 550px;
-    margin: auto;
+.recruit-hero > p {
+    max-width: 570px;
+
+    margin: 0 auto;
 
     color: var(--muted);
-    line-height: 1.7;
-    font-size: 16px;
+
+    font-size: 15px;
+    line-height: 1.8;
 }
 
 
-/* =========================
+/* HERO INFORMATION */
+
+.recruit-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 25px;
+    margin-top: 38px;
+}
+
+.recruit-info span {
+    color: #c3c8d2;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+
+/* =====================================
    APPLICATION SECTION
-========================= */
+===================================== */
 
 .application-section {
     width: 100%;
-    padding: 65px 20px 90px;
-    background: #090b10;
+    max-width: 1150px;
+
+    margin: 0 auto;
+    padding: 90px 25px;
 }
+
+
+/* APPLICATION HEADING */
+
+.application-heading {
+    margin-bottom: 45px;
+}
+
+.section-label {
+    color: var(--orange);
+
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.section-label span {
+    color: white;
+}
+
+.application-heading h2 {
+    margin: 20px 0 12px;
+
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 900;
+}
+
+.application-heading h2 span {
+    color: var(--orange);
+}
+
+.application-heading p {
+    color: var(--muted);
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* =====================================
+   FORM CARDS
+===================================== */
 
 .form-card {
     width: 100%;
-    max-width: 1050px;
-
-    margin: 0 auto;
-    padding: 45px;
-
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-}
-
-.form-heading {
-    margin-bottom: 45px;
-}
-
-.form-heading h2 {
-    margin-top: 12px;
-    margin-bottom: 10px;
-
-    font-size: 30px;
-    font-weight: 800;
-}
-
-.form-heading p {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-
-/* =========================
-   FORM SECTIONS
-========================= */
-
-.form-section {
-    margin-bottom: 45px;
-}
-
-.section-heading {
-    display: flex;
-    align-items: center;
-    gap: 14px;
 
     margin-bottom: 25px;
-    padding-bottom: 15px;
+    padding: 35px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+
+/* CARD HEADING */
+
+.form-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+
+    margin-bottom: 32px;
+    padding-bottom: 23px;
 
     border-bottom: 1px solid var(--border);
 }
 
-.section-heading span {
-    width: 35px;
-    height: 35px;
+.form-number {
+    width: 42px;
+    height: 42px;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
+    flex-shrink: 0;
 
     background: rgba(255, 153, 51, 0.12);
+
     color: var(--orange);
 
     border-radius: 6px;
 
+    font-size: 14px;
     font-weight: 900;
-    font-size: 13px;
 }
 
-.section-heading h3 {
-    font-size: 19px;
-    font-weight: 800;
+.form-card-heading h3 {
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.form-card-heading p {
+    margin-top: 6px;
+
+    color: var(--muted);
+    font-size: 12px;
 }
 
 
-/* =========================
+/* =====================================
    FORM GRID
-========================= */
+===================================== */
 
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px;
+
+    gap: 25px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 11px;
 
-    margin-bottom: 22px;
     min-width: 0;
+    margin-bottom: 25px;
 }
 
 .form-group label {
-    color: #e8eaf0;
-    font-size: 13px;
-    font-weight: 700;
+    color: #e7e9ee;
+
+    font-size: 12px;
+    font-weight: 800;
 }
 
+
+/* INPUTS, SELECTS AND TEXTAREAS */
+
 .form-group input,
+.form-group select,
 .form-group textarea {
     width: 100%;
     min-width: 0;
@@ -271,153 +398,333 @@ body {
     padding: 15px;
 
     background: #0b0e14;
+
     border: 1px solid #303644;
-    border-radius: 7px;
+    border-radius: 5px;
 
     color: white;
+
     font-family: inherit;
-    font-size: 14px;
+    font-size: 13px;
 
     outline: none;
+
     transition: border 0.2s;
 }
 
-.form-group input {
-    height: 50px;
+.form-group input,
+.form-group select {
+    height: 52px;
 }
 
 .form-group textarea {
+    min-height: 145px;
+
     resize: vertical;
-    min-height: 120px;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #626977;
+    color: #687080;
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group select option {
+    background: #11141b;
+    color: white;
 }
 
 .form-group input:focus,
+.form-group select:focus,
 .form-group textarea:focus {
     border-color: var(--orange);
 }
 
 
-/* =========================
-   SUBMIT BUTTON
-========================= */
+/* FULL WIDTH FIELDS */
+
+.full-width {
+    width: 100%;
+}
+
+
+/* CHARACTER COUNTER */
+
+.character-info {
+    align-self: flex-end;
+
+    color: var(--muted);
+    font-size: 11px;
+}
+
+
+/* =====================================
+   SUBMISSION
+===================================== */
 
 .submit-area {
-    padding-top: 25px;
+    padding: 30px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
     border-top: 1px solid var(--border);
 }
 
 .submit-area p {
+    max-width: 550px;
+
+    margin-bottom: 22px;
+
     color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 20px;
+
+    font-size: 12px;
+    line-height: 1.7;
 }
 
-.submit-btn {
-    min-width: 230px;
-    padding: 16px 25px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
+/* ACTUAL HTML CLASS: submit-button */
+
+.submit-button {
+    min-width: 240px;
+
+    padding: 17px 25px;
 
     background: var(--orange);
     color: #090b10;
 
     border: none;
-    border-radius: 7px;
+    border-radius: 5px;
 
-    font-size: 13px;
+    font-family: inherit;
+    font-size: 12px;
     font-weight: 900;
     letter-spacing: 1px;
 
     cursor: pointer;
+
     transition: 0.2s;
 }
 
-.submit-btn:hover {
+.submit-button:hover {
     background: #ffb15c;
     transform: translateY(-2px);
 }
 
-.submit-btn span {
-    font-size: 20px;
+.submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
 }
 
 #formMessage {
     margin-top: 20px;
-    font-size: 14px;
+
     color: var(--green);
+    font-size: 13px;
+    line-height: 1.6;
 }
 
 
-/* =========================
+/* =====================================
    FOOTER
-========================= */
+===================================== */
 
 .footer {
-    padding: 40px 20px;
-
-    text-align: center;
+    padding: 45px 7% 20px;
 
     background: #07090d;
+
     border-top: 1px solid var(--border);
 }
 
-.footer-logo {
-    font-size: 24px;
+.footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 35px;
+}
+
+
+/* FOOTER BRAND */
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+/* CRITICAL FOOTER LOGO FIX */
+
+.footer-brand img {
+    width: 55px !important;
+    height: 55px !important;
+
+    max-width: 55px;
+    max-height: 55px;
+
+    object-fit: contain;
+    display: block;
+}
+
+.footer-brand h3 {
+    font-size: 22px;
     font-weight: 900;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
+    letter-spacing: 2px;
 }
 
-.footer p {
+.footer-brand h3 span {
+    color: var(--orange);
+}
+
+.footer-brand p {
+    margin-top: 5px;
+
     color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 20px;
-}
 
-.footer span {
-    color: #626977;
-    font-size: 11px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
 }
 
 
-/* =========================
-   MOBILE RESPONSIVENESS
-========================= */
+/* FOOTER LINKS */
 
-@media (max-width: 750px) {
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.footer-links a {
+    color: var(--muted);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    transition: 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--orange);
+}
+
+
+/* FOOTER BOTTOM */
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--border);
+}
+
+.footer-bottom span {
+    color: #687080;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 850px) {
 
     .navbar {
-        padding: 15px 5%;
-        flex-direction: column;
-        gap: 18px;
+        padding: 0 5%;
     }
 
     .nav-links {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 18px;
+        gap: 16px;
     }
 
     .nav-links a {
-        font-size: 12px;
+        font-size: 10px;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .navbar {
+        height: 75px;
+    }
+
+    .brand {
+        font-size: 20px;
+    }
+
+    .brand img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+        top: 75px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 25px;
+
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+
+        background: #11141b;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.show {
+        display: flex;
     }
 
     .recruit-hero {
-        min-height: 260px;
-        padding: 50px 20px;
+        min-height: 400px;
+        padding: 60px 20px;
+    }
+
+    .recruit-hero h1 {
+        font-size: 43px;
+    }
+
+    .recruit-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .application-section {
+        padding: 60px 15px;
     }
 
     .form-card {
-        padding: 25px 20px;
+        padding: 25px 18px;
     }
 
     .form-grid {
@@ -425,35 +732,36 @@ body {
         gap: 0;
     }
 
-    .form-heading h2 {
-        font-size: 25px;
+    .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
     }
 
-    .section-heading h3 {
-        font-size: 16px;
+    .footer-links {
+        gap: 18px;
     }
 
-    .submit-btn {
+    .footer-bottom {
+        flex-direction: column;
+    }
+
+    .submit-button {
         width: 100%;
     }
+
 }
 
-@media (max-width: 400px) {
 
-    .logo {
-        font-size: 20px;
-    }
+@media (max-width: 380px) {
 
-    .nav-links {
-        gap: 12px;
-    }
-
-    .nav-links a {
-        font-size: 11px;
+    .recruit-hero h1 {
+        font-size: 35px;
     }
 
     .form-card {
-        padding: 20px 15px;
+        padding: 20px 14px;
     }
+
 }
 ```
